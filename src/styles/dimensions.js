@@ -11,8 +11,8 @@ export const dimensions = {
     h2: '39px',
     h3: '31px',
     h4: '29px',
-    h5: '22',
-    h6: '19',
+    h5: '22px',
+    h6: '19px',
   },
 }
 

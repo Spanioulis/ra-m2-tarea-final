@@ -1,21 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { colors } from '../../styles'
+import styled from 'styled-components'
 
-export default function Button({
-  children,
-  color = colors.main,
-  onClick = () => {},
-}) {
+const ButtonStyled = styled.button`
+  background: ${({ backgroundColor }) => backgroundColor || '#8f94cd'};
+  border-radius: 8px;
+  border: none;
+  color: ${({ color }) => color || 'whitesmoke'};
+  cursor: pointer;
+  padding: ${({ padding }) => padding || '0.3rem 1rem'};
+  margin: ${({ margin }) => margin || '0rem 0.2rem'};
+  text-align: center;
+`
+
+function Button({ children, onClick = () => {} }) {
   return (
-    <button type="button" onClick={onClick} style={{ backgroundColor: color }}>
+    <ButtonStyled type="button" onClick={onClick}>
       {children}
-    </button>
+    </ButtonStyled>
   )
 }
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  color: PropTypes.string,
   onClick: PropTypes.func,
 }
+
+export default Button
