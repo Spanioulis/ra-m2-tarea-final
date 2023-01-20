@@ -10,24 +10,31 @@ const SelectStyled = styled.select`
   width: 400px;
 `
 
-function Select({ value, value2, value3, value4 }) {
+function Select({ defaultValue, options, id, onChange }) {
   return (
-    <SelectStyled name="select">
-      <option value="default" defaultValue={value}>
-        {value}
+    <SelectStyled
+      name="select"
+      id={id}
+      onChange={onChange}
+      defaultValue="default"
+    >
+      <option value="default" disabled>
+        {defaultValue}
       </option>
-      <option value="value2">{value2}</option>
-      <option value="value3">{value3}</option>
-      <option value="value3">{value4}</option>
+      {options.map((option) => (
+        <option value={option.value} key={option.value}>
+          {option.label}
+        </option>
+      ))}
     </SelectStyled>
   )
 }
 
 Select.propTypes = {
-  value: PropTypes.string.isRequired,
-  value2: PropTypes.string.isRequired,
-  value3: PropTypes.string.isRequired,
-  value4: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
 }
 
 export default Select
